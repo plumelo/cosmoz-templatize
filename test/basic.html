@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-data-nav-basic</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<link rel="import" href="../cosmoz-templatize.html">
+	</head>
+	<body>
+
+		<script>
+			suite('defaults', function () {
+				test('Cosmoz.Templatize is an Object', function (done) {
+					assert.isObject(Cosmoz.Templatize);
+					done();
+				});
+			});
+		</script>
+	</body>
+</html>
