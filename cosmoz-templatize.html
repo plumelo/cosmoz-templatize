@@ -1,0 +1,57 @@
+<link rel="import" href="./cosmoz-templatizer.html ">
+<script>
+	(function () {
+		'use strict';
+		const IS_V2 = Polymer.Templatize != null;
+
+		window.Cosmoz = window.Cosmoz || {};
+
+		/**
+		 * @namespace
+		 * @memberof Cosmoz
+		 * @summary Polymer.Templatize polyfill for Polymer 1.x.
+		 */
+		Cosmoz.Templatize = {
+
+			/**
+			 * Returns a constructor for a new template instance.
+			 *
+			 * @memberof Cosmoz.Templatize
+			 * @param {HTMLTemplateElement} template Template to templatize
+			 * @param {HTMLElement} owner Owner of the template instances any optional callbacks will be bound to this owner.
+			 * @param {Object=} options Options dictionary
+			 * @return {Function} Generated class bound to the template  provided
+			 */
+			templatize(template, owner, options = {}) {
+				if (IS_V2) {
+					return Polymer.Templatize.templatize(template, owner, {
+						mutableData: Boolean(options.mutableData),
+						parentModel: options.parentModel,
+						instanceProps: options.instanceProps,
+						forwardHostProp: options.forwardHostProp,
+						notifyInstanceProp: options.notifyInstanceProp
+					});
+				}
+				return (template.__templatizer  || document.createElement('cosmoz-templatizer'))
+					.templatize(template, owner, {
+						instanceProps: options.instanceProps,
+						forwardParentProp: options.forwardParentProp,
+						forwardParentPath: options.forwardParentPath,
+						forwardInstanceProp: options.forwardInstanceProp,
+						forwardInstancePath: options.forwardInstancePath
+					});
+			},
+
+			modelForElement(template, el) {
+				if (IS_V2) {
+					return Polymer.Templatize.modelForElement(template, el);
+				}
+				const templatizer = template.__czTemplatizer__;
+				if (!templatizer) {
+					return null;
+				}
+				return templatizer.modelForElement(el);
+			}
+		};
+	})();
+</script>

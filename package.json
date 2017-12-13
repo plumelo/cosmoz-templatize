@@ -1,0 +1,37 @@
+{
+	"name": "cosmoz-templatize",
+	"version": "0.0.1",
+	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-templatize.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-templatize)",
+	"main": "cosmoz-templatize.html",
+	"directories": {
+		"test": "test"
+	},
+	"devDependencies": {
+		"eslint": "^4.11.0",
+		"eslint-plugin-html": "^4.0.1",
+		"eslint-plugin-mocha": "^4.11.0",
+		"polymer-cli": "^1.5.7",
+		"web-component-tester": "^6.4.1"
+	},
+	"scripts": {
+		"start": "polymer serve -o",
+		"postinstall": "polymer install --variants",
+		"lint": "eslint --cache --cache-location .eslintcache/ --ext .js,.html . && polymer lint cosmoz-*.html",
+		"test": "polymer test",
+		"analyze": "polymer analyze --input cosmoz-*.html  > analysis.json"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/neovici/cosmoz-templatize.git"
+	},
+	"keywords": [
+		"polymer",
+		"web-components"
+	],
+	"author": "",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/neovici/cosmoz-templatize/issues"
+	},
+	"homepage": "https://github.com/neovici/cosmoz-templatize#readme"
+}
