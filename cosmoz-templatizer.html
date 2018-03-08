@@ -8,9 +8,14 @@
 			Polymer.Templatizer
 		],
 		templatize(template, owner, opts = {}) {
+			const ctor =  (function (self, model){
+				return self.stamp(model);
+			}).bind(null, this);
+
 			if (this.ctor) {
-				return this.ctor;
+				return ctor;
 			}
+
 			this.__owner = owner;
 			this._instanceProps = opts.instanceProps;
 
@@ -37,9 +42,7 @@
 			Polymer.Templatizer.templatize.call(this, template);
 			template.__templatizer = this;
 
-			return (function (self, model){
-				return self.stamp(model);
-			}).bind(null, this);
+			return ctor;
 		},
 
 		_getRootDataHost() {
